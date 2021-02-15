@@ -7,3 +7,8 @@ Created from the odoo-cypress repo (https://github.com/borni-dhifi/odoo-cypress)
 - run tests with `npm run cy_run`
 
 For more information see the original odoo-cypress repo
+
+# Guide
+## Step 1: setup
+* install stuff
+* configure cypress.env.json

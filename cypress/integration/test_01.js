@@ -1,59 +1,42 @@
-import api from '../../odoo/api'
+import api from '../../odoo/api';
+import {users} from '../../odoo/users.js';
 
+var database = Cypress.env("database");
 
-  // context('Login', () => { 
-  //     it('Check user/password', () => {
-  //      cy.Login("admin")
-  //      cy.Login("slutkonsument")
-       
-  //    })
-  // })
-
-
-
-// describe('My first Cypress Test', ()=> {
-
-// 	it('Navigate To Partie Site', () => {
-//     	cy.visit('http://barney.vertel.se/');
-       
-//     })
-
-// })
-
-// describe('Login Test', ()=> {
-
-// it('Login', (user) => { 
-//     cy.get('#login')
-//     .type(user.text)
-
-//   cy.get('#password')
-//     .type(user.password)
-
-//   cy.Login({ text: 'testkund_sk@example.com', password: 'summer123' })
-
-// })
-
-// })
-
-
-describe('Login Test', ()=> {
-
-it('Login', (login, password) => { 
-  //   cy.get('#login')
-  //   .type(user.text)
-
-  // cy.get('#password')
-  //   .type(user.password)
-
-  cy.Login({ login: 'testkund_sk@example.com', password: 'summer123' })
-
+describe('Logging in and out as all users ...', () => {
+    for ((display_name, credentials) in users) {
+        it('Logging in as ' + display_name, () => { 
+            cy.Login(database, credentials['email'], credentials['password']);
+        })
+        it('Logging out ' + display_name, () => { 
+            cy.Logout();
+        })
+    }
 })
 
+describe('Navigation', ()=> {
+ 	it('Navigate To eCommerce Category', () => {
+     	cy.visit('http://barney.vertel.se/shop');
+    })
+    
+    /*
+    it('Go to Website under MainMenu', () => {
+     	cy.MainMenu('Website','TODO: sale.sale_menu_root');
+    })
+     */
 })
 
-
-// cy.typeLogin({ email: 'testkund_af@example.com', password: 'summer123' })
-
-// cy.typeLogin({ email: 'testkund_spa@example.com', password: 'summer123' })
-
-// cy.typeLogin({ email: 'testkund_ht@example.com', password: 'summer123' })
+// EXAMPLE FROM ODOO_SPEC.JS
+context('Creating something', () => {     
+   // Example : Create Customer
+   it('Customer', () => {
+       cy.MainMenu('CRM','crm.crm_menu_root')
+       cy.SubMenu('Customers','crm.res_partner_menu_crm')
+       cy.Button('Create')
+       cy.SetValue('name','Borni DHIFI')
+       cy.SetValue('city','Ariana')
+       cy.M2O_SetValue('country_id','Tunisia')
+       cy.SetValue('mobile','0021621809219')
+       cy.Button('Save')
+    })
+})

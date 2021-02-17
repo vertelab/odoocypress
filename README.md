@@ -9,6 +9,6 @@ For more information see the original odoo-cypress repo
 * write tests in cypress/integration/
 * run tests with `npm run cy_run`
 
-### Notes
+### Helpful notes
 * odoo/api.js contains API functions for odoo
 * examples/ contains two directories: one with examples of generic cypress functions, and one with examples of how the odoo-cypress API is used.

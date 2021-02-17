@@ -1,7 +1,7 @@
 {
   "name": "odoocypress",
   "version": "1.0.0",
-  "description": "Odoo Framework E2E Testing using Cypress",
+  "description": "",
   "main": "index.js",
   "scripts": {
     "cy_version": "cypress version",
@@ -18,6 +18,5 @@
     "cypress": "^6.5.0"
   },
   "dependencies": {},
-  "keywords": [],
-  "description": ""
+  "keywords": []
 }

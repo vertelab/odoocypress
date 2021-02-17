@@ -11,17 +11,19 @@ Login to odoo_url for database 'database' using user/ password
 EX: cy.Login_User('myDatabase', 'customer_1@example.com', 'password123')
 -----------------------------------------------------------------*/
 Cypress.Commands.add('Login', (database, username, password) => {  
-      cy.visit(odoo_url + '/web/database/selector')
-      cy.url().should('contain', '/web/database/selector')
-      cy.get('.o_database_list').contains(database).should('have.class', 'list-group-item').click()
-      cy.Waiting(1000)
-      cy.url().should('include', '/web/login')
-      cy.get('form').within(function(){
-         cy.get('input[name="login"]').should('have.attr', 'name', 'login').type(user).should('have.value', username)
-         cy.get('input[name="password"]').should('have.attr', 'name', 'password').type(password).should('have.value', password)
-         cy.root().submit()
-      })   
-     cy.Waiting(1000)
+    cy.visit(odoo_url + '/web/database/selector')
+    cy.url().should('contain', '/web/database/selector')
+    // cy.get('.o_database_list').contains(database).should('have.class', 'list-group-item').click()
+    cy.get('.o_database_list').contains(database).click()
+
+    cy.Waiting(1000)
+    cy.url().should('include', '/web/login')
+    cy.get('form').within(function(){
+        cy.get('input[name="login"]').should('have.attr', 'name', 'login').type(username).should('have.value', username)
+        cy.get('input[name="password"]').should('have.attr', 'name', 'password').type(password).should('have.value', password)
+        cy.root().submit()
+    })   
+    cy.Waiting(1000)
 })
 
 /*-----------------------------------------------------------------
@@ -29,7 +31,7 @@ Cypress.Commands.add('Login', (database, username, password) => {
 EX: cy.Logout()
 -----------------------------------------------------------------*/
 Cypress.Commands.add('Logout', () => {      
-      cy.visit(odoo_url+'/web/session/logout')	 
+    cy.visit(odoo_url+'/web/session/logout')	 
 })
 
 
@@ -39,8 +41,8 @@ Click To main menu using  Name and XML_ID for this menu
 EX: cy.MainMenu('Sales','sale.sale_menu_root')
 -----------------------------------------------------------------*/
 Cypress.Commands.add('MainMenu', (menu_name,xml_id) => { 
-  cy.get('nav').contains(menu_name).should('have.attr', 'data-menu-xmlid', xml_id).click()
-  cy.Waiting(3000)
+    cy.get('nav').contains(menu_name).should('have.attr', 'data-menu-xmlid', xml_id).click()
+    cy.Waiting(3000)
 })
 
 

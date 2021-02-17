@@ -2,27 +2,19 @@ import api from '../../odoo/api';
 const { users } = require('../../odoo/users.js');
 
 const database = Cypress.env("database");
+const odoo_url = Cypress.env("odoo_url");
 
-describe('Logging in and out as all users ...', () => {
+describe('Logging in as all users ...', () => {
     for (var user in users) {
         it('Logging in to database ' + database + ' as ' + user, () => { 
-            cy.Login(database, user['email'], user['password']);
+            cy.Login(database, users[user]['email'], users[user]['password']);
         })
-        //~ it('Logging out ' + user, () => { 
-            //~ cy.Logout();
-        //~ })
     }
 })
 
-describe('Navigation', ()=> {
+describe('Navigation to shop', ()=> {
  	it('Navigate To eCommerce Category', () => {
         cy.Login(database, users['admin']['email'], users['admin']['password']);
-     	cy.visit('http://barney.vertel.se/shop');
+     	cy.visit(odoo_url + '/shop');
     })
-    
-    /*
-    it('Go to Website under MainMenu', () => {
-     	cy.MainMenu('Website','TODO: sale.sale_menu_root');
-    })
-     */
 })

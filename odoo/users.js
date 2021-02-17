@@ -1,31 +1,32 @@
-var users = {
-    'Admin' :  {
+const users = {
+    'admin' :  {
             'email' : 'admin',
             'password' : 'admin',
         },
-    'Consumer' : 
+    'consumer' : 
         {  
             'email' : 'testkund_sk@example.com',
             'password' : 'summer123',
         },
-    'Reseller' :
+    'reseller' :
         {   
             'email' : 'testkund_sk@example.com',
             'password' : 'summer123',
         },
-    'Hudterapeut' :
+    'hudterapeut' :
         {   
             'email' : 'testkund_sk@example.com',
             'password' : 'summer123',
         },
-    'SPA-terapeut',
+    'spa-terapeut' :
         {   
             'email' : 'testkund_sk@example.com',
             'password' : 'summer123',
         },
-    'Dutch Reseller',
+    'dutch reseller' :
         {   
             'email' : 'info@lacasamia.nl',
             'password' : 'summer123',
         }
 }
+export { users };

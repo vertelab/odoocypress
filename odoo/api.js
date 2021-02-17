@@ -11,7 +11,7 @@ Login to odoo_url for database 'database' using user/ password
 EX: cy.Login_User('myDatabase', 'customer_1@example.com', 'password123')
 -----------------------------------------------------------------*/
 Cypress.Commands.add('Login', (database, username, password) => {  
-      cy.visit(odoo_url+'/web/database/selector')
+      cy.visit(odoo_url + '/web/database/selector')
       cy.url().should('contain', '/web/database/selector')
       cy.get('.o_database_list').contains(database).should('have.class', 'list-group-item').click()
       cy.Waiting(1000)

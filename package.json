@@ -1,9 +1,16 @@
 {
-  "name": "cypress-odoo-test",
+  "name": "odoocypress",
   "version": "1.0.0",
+  "description": "Odoo Framework E2E Testing using Cypress",
   "main": "index.js",
   "scripts": {
-    "test": "cypress open"
+    "cy_version": "cypress version",
+    "cy_verify": "cypress verify",
+    "cy_open": "cypress open --global",
+    "cy_run": "cypress run",
+    "cy_run_chrome": "cypress run --browser chrome",
+    "cy_run_record": "cypress run --record",
+    "cy_run_chrome_record": "cypress run --browser chrome --record"
   },
   "author": "",
   "license": "ISC",

@@ -1,7 +1,2 @@
-{
-  "odoo_url": "http://localhost:8070",
-  "database": "cypress2",
-  "user": "admin",
-  "password": "admin"
-}
+{}
 

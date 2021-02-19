@@ -18,14 +18,15 @@ EX: cy.goto_product(product_id)
 -----------------------------------------------------------------*/
 Cypress.Commands.add('goto_product', (product_id) => {  
     cy.visit(odoo_url + '/shop/' + product_id)
+    cy.wait(500) // needed for add to cart to work for some reason
 })
 
 /*-----------------------------------------------------------------
 		Add product to cart - Assumes we are on product page
 EX: cy.add_to_cart(product_id)
 -----------------------------------------------------------------*/
-Cypress.Commands.add('add_to_cart', (product_id) => {  
-    cy.get('#add_to_cart').click()
+Cypress.Commands.add('add_to_cart', (product_id) => {
+    cy.get('a[id="add_to_cart"]').click()
 })
 
 

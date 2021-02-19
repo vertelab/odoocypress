@@ -1,6 +1,5 @@
 
-import api from '../../odoo/api'
-
+import backoffice_api from '../../odoo/backoffice_api';
 
 describe('Cypress For Odoo', () => {
   

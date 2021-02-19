@@ -10,7 +10,7 @@ For more information see the original odoo-cypress repo.
 
 ### Usage
 * run all tests in `cypress/integration/` with `npm run cy_run`
-* run a selection of tests with ./run_selection
+* run a selection of tests with `./run_selection`
 * write tests in `cypress/integration/`
 * `odoo/backoffice_api.js` contains functions for navigation and modification of odoo backoffice.
 * `odoo/webshop_api.js` contains functions for navigation and modification of odoo webshop.

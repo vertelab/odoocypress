@@ -15,6 +15,7 @@ For more information see the original odoo-cypress repo.
 * `npm run cy_run` runs all tests in `cypress/integration/`
 * `odoo/backoffice_api.js` contains functions for navigation and modification of odoo backoffice.
 * `odoo/webshop_api.js` contains functions for navigation and modification of odoo webshop.
+* `npm run cy_open` opens the cypress GUI if you wish to do so
 
 ### Inspiration
 * `examples/` contains two directories: one with examples of generic cypress functions, and one with examples of how the odoo-cypress API is used.

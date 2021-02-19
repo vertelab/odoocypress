@@ -1,14 +1,18 @@
 # odoocypress
-Created from the odoo-cypress repo (https://github.com/borni-dhifi/odoo-cypress)
+Testing and automation of Odoo 14.0 using Cypress.
 
-For more information see the original odoo-cypress repo
+Created from the odoo-cypress repo (https://github.com/borni-dhifi/odoo-cypress) \
+For more information see the original odoo-cypress repo.
 
-### Usage from start to finish
+### Installation and setup
 * install cypress: `npm install cypress`
 * configure `cypress.env.json`
-* write tests in `cypress/integration/`
-* run tests with `npm run cy_run`
 
-### Helpful notes
-* `odoo/api.js` contains API functions for odoo
+### Usage
+* run tests with `npm run cy_run`
+* `odoo/backoffice_api.js` contains functions for navigation and modification of odoo backoffice.
+* `odoo/webshop_api.js` contains functions for navigation and modification of odoo webshop.
+* write tests in `cypress/integration/`
+
+### Inspiration
 * `examples/` contains two directories: one with examples of generic cypress functions, and one with examples of how the odoo-cypress API is used.

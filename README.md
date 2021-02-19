@@ -9,9 +9,10 @@ For more information see the original odoo-cypress repo.
 * configure `cypress.env.json`
 
 ### Usage
-* run all tests in `cypress/integration/` with `npm run cy_run`
-* configure and run `./run_selection` to run a selection of tests
-* write tests in `cypress/integration/`
+* write tests in `cypress/tests-available`
+* symlink desired tests in `cypress/tests-available` from `cypress/integration/`
+  * i.e. run `ln -s ../tests-avaiable/myTest.js .` from `cypress/integration/` 
+* `npm run cy_run` runs all tests in `cypress/integration/`
 * `odoo/backoffice_api.js` contains functions for navigation and modification of odoo backoffice.
 * `odoo/webshop_api.js` contains functions for navigation and modification of odoo webshop.
 

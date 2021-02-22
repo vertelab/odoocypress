@@ -10,17 +10,17 @@ const users = {
         },
     'reseller' :
         {   
-            'email' : 'testkund_sk@example.com',
+            'email' : 'testkund_af@example.com',
             'password' : 'summer123',
         },
     'hudterapeut' :
         {   
-            'email' : 'testkund_sk@example.com',
+            'email' : 'testkund_ht@example.com',
             'password' : 'summer123',
         },
     'spa-terapeut' :
         {   
-            'email' : 'testkund_sk@example.com',
+            'email' : 'testkund_spa@example.com',
             'password' : 'summer123',
         },
     'dutch reseller' :

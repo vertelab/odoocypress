@@ -6,11 +6,13 @@ const database = "maria_utv";
 const odoo_url = Cypress.env("odoo_url");
 
 describe('Add some products to cart', ()=> {
-    it('... as admin', () => {
-        cy.Login(database, 'admin', 'admin');
-        cy.add_to_cart([7, 8, 9]);
-        cy.Logout();
-    })          
+    Object.keys(users).forEach(function(user) {
+        it('... as ' + user, () => {
+            cy.Login(database, users[user]['email'], users[user]['password']);
+            cy.add_to_cart([7, 8, 9]);
+            cy.Logout();
+        })          
+    })
 })
 
 describe('Navigating from webshop -> category -> product -> add to cart', ()=> {
@@ -38,10 +40,10 @@ describe('Searching for Olive in text search field', ()=> {
 
 describe('Navigating around webshop menus', ()=> {
     Object.keys(users).forEach(function(user) {
-        it('... as ' + user + ' with email ' + users[user]['email'] + ' and password ' + users[user]['password'], () => {
+        it('... as ' + user, () => {
             cy.Login(database, users[user]['email'], users[user]['password']);
             cy.visit(odoo_url + '/shop');
-            // Generalisera: lista ut alla huvudkategorier och loopa igenom istället.
+            // TODO: generalisera. lista ut alla huvudkategorier och loopa igenom istället.
             cy.goto_category(3);
             cy.goto_category(15);
             cy.goto_category(30);
@@ -53,13 +55,14 @@ describe('Navigating around webshop menus', ()=> {
     })
 })
 
-//~ describe('Placing an order', ()=> {
-    //~ Object.keys(users).forEach(function(user) {
-        //~ it('... as admin', () => {
-            //~ cy.Login(database, 'admin', 'admin');
-            //~ cy.add_to_cart(7);
-            //~ cy.place_order();
-            //~ cy.Logout();
-        //~ })
-    //~ })
-//~ })
+// TODO: cy.place_order() does not actually place and order. It just finds the button.
+describe('Placing an order', ()=> {
+    Object.keys(users).forEach(function(user) {
+        it('... as ' + user, () => {
+            cy.Login(database, users[user]['email'], users[user]['password']);
+            cy.add_to_cart([7]);
+            cy.place_order();
+            cy.Logout();
+        })
+    })
+})

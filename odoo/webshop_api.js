@@ -1,8 +1,16 @@
 /*-----------------------------------------------------------------
            			Odoo Webshop API For Cypress
   ---------------------------------------------------------------*/
-	  
+
 var odoo_url = Cypress.env("odoo_url")  
+
+/*-----------------------------------------------------------------
+		Go to webshop
+EX: cy.goto_webshop()
+-----------------------------------------------------------------*/
+Cypress.Commands.add('goto_webshop', () => {  
+    cy.visit(odoo_url + '/shop/')
+})
 
 /*-----------------------------------------------------------------
 		Go to webshop category 
@@ -34,33 +42,33 @@ Cypress.Commands.add('add_to_cart', (products_id) => {
 })
 
 /*-----------------------------------------------------------------
-		Removes all products from cart
-EX: cy.empty_cart()
------------------------------------------------------------------*/
-Cypress.Commands.add('empty_cart', () => {
-    cy.visit(odoo_url + '/shop/cart');
-
-    cy.get('a[class="js_delete_product no-decoration"]').each(($match) => {
-        cy.wait(500);
-        cy.get($match).invoke('click');
-        cy.wait(500);
-        cy.visit(odoo_url + '/shop/cart');
-    })
-})
-
-/*-----------------------------------------------------------------
 		Places an order for all items currently in the cart
 EX: cy.place_order()
 -----------------------------------------------------------------*/
 Cypress.Commands.add('place_order', () => {
+    // go to checkout
     cy.visit(odoo_url + '/shop/checkout?express=1')
-    cy.SetValue("phone", "0720112233");
-    cy.SetValue("street", "Nygatan 9");
-    cy.SetValue("city", "Linköping");
-    cy.SetValue("zip", "111 11");
-    cy.get('select[name="country_id"]').select("196");
-    cy.get('a[class="btn btn-primary mb32 a-submit a-submit-disable a-submit-loading"]').click();
-    cy.get('a[class="btn btn-primary mb32"]').click();
+    
+    cy.location('pathname').then((loc) => {
+        // if address is not already saved
+        if(loc.includes('/shop/address')) {
+            // enter address
+            cy.SetValue("phone", "0720112233");
+            cy.SetValue("street", "Nygatan 9");
+            cy.SetValue("city", "Linköping");
+            cy.SetValue("zip", "111 11");
+            cy.get('select[name="country_id"]').select("196");
+            cy.get('a[class="btn btn-primary mb32 a-submit a-submit-disable a-submit-loading"]').click();
+            
+            // click confirm order (TODO: IT CLICKS BUT ORDER IS STILL NOT CONFIRMED??)
+            cy.get('a[class="btn btn-primary mb32"]').should('have.attr', 'role', 'button').trigger('mouseover').click();
+            cy.wait(500);
+        }
+        else {
+            cy.get('a[class="btn btn-primary a-submit"]').should('have.attr', 'role', 'button').trigger('mouseover').click();
+            cy.wait(500);
+        }
+    })
 })
 
 /*-----------------------------------------------------------------

@@ -5,6 +5,7 @@ Created from the odoo-cypress repo (https://github.com/borni-dhifi/odoo-cypress)
 For more information see the original odoo-cypress repo.
 
 ### Installation and setup
+* install npm: `sudo apt install npm`
 * install cypress: `npm install cypress`
 * configure `cypress.env.json`
 

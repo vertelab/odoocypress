@@ -2,7 +2,7 @@ import backoffice_api from '../../odoo/backoffice_api';
 import webshop_api from '../../odoo/webshop_api';
 const { users } = require('../../odoo/users.js');
 
-const database = "maria_utv";
+const database = "maria4_utv2";
 const odoo_url = Cypress.env("odoo_url");
 
 describe('Add some products to cart', ()=> {
@@ -11,7 +11,7 @@ describe('Add some products to cart', ()=> {
             cy.Login(database, users[user]['email'], users[user]['password']);
             cy.add_to_cart([7, 8, 9]);
             cy.Logout();
-        })          
+        })
     })
 })
 
@@ -28,7 +28,8 @@ describe('Navigating from webshop -> category -> product -> add to cart', ()=> {
 })
 
 describe('Searching for Olive in text search field', ()=> {
-    Object.keys(users).forEach(function(user) {
+Object.keys(users).forEach(function(user) {
+
         it('... as ' + user, () => {
             cy.Login(database, users[user]['email'], users[user]['password']);
             cy.visit(odoo_url + '/shop');
@@ -37,6 +38,8 @@ describe('Searching for Olive in text search field', ()=> {
         })
     })
 })
+
+
 
 describe('Navigating around webshop menus', ()=> {
     Object.keys(users).forEach(function(user) {
